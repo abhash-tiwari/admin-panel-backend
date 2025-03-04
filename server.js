@@ -29,6 +29,8 @@ const connectDb = require('./utils/db')
 
 const router = require('./router/auth-router');
 
+
+
 // Middleware to parse JSON requests
 app.use(express.json());
 
