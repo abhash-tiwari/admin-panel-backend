@@ -39,7 +39,8 @@ const register = async (req, res) => {
 
         res.status(201).json({msg : 'registration successfull', token : createdUser.generateToken(), userId : createdUser._id.toString()});
     } catch (error) {
-        res.status(400).send({ msg: "page not found" });
+        // res.status(400).send({ msg: "page not found" });
+        next(error)
     }
 };
 
@@ -70,8 +71,9 @@ const login = async (req, res) => {
         }
 
     } catch (error) {
-        console.log(error)
-        res.status(500).json({msg: "not found"})
+        // console.log(error)
+        // res.status(500).json({msg: "not found"})
+        next(error) // using middleware for handling error
     }
 }
 

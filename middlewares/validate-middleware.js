@@ -7,8 +7,16 @@ const validate = (schema) => async (req, res, next) => {
     next()
  } catch (err) {
     console.log(err) // it will return errors array
-    const message = err.errors[0].message
-    res.status(400).json({msg: message})
+    const message = "Fill the Input Properly"
+    const extraDetails = err.errors[0].message
+    const status = res.status(400).json({msg: message})
+    const error = {
+            status,
+            message,
+            extraDetails
+        }
+
+        next(error)
  }
 }
 

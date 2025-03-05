@@ -22,4 +22,16 @@ const signUpSchema =z.object({
     .max(200,{message: "Name cannot be over 20 chars"}),
 }) 
 
-module.exports = signUpSchema
+const signInSchema = z.object({
+    email: z
+    .string({required_error: "EMail is Required"}).trim()
+    .email({message: "Invalid email"})
+    .min(3, {message: "Name must be at least 3 chars"})
+    .max(20,{message: "Name cannot be over 20 chars"}),
+    password: z
+    .string({required_error: "Password is Required"})
+    .min(7, {message: "Name must be at least 3 chars"})
+    .max(200,{message: "Name cannot be over 20 chars"}),
+}) 
+
+module.exports = {signUpSchema, signInSchema}
